@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(username: 'hiragi', password: 'hiragi')
+
+Doc.create(title: "today", content: "FUCK")

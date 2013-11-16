@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    @docs = Doc.all
   end
 
   def login
@@ -10,10 +11,16 @@ class WelcomeController < ApplicationController
     if @user
       if @user.god?
         redirect_to :action => "index"
-      else
-        @user = "you are member!"
       end
     end
+  end
+
+  def post
+  end
+
+  def post_blog
+    Doc.create(title: params[:title], content: params[:content])
+    redirect_to :action => "index"
   end
 
 end

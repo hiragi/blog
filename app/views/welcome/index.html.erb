@@ -1,3 +1,22 @@
 <h1>Hello, Rails!</h1>
 
 <a href="welcome/login">Login</a>
+
+<h2>DOCS</h2>
+
+<div class="navi">
+  <a href="welcome/post">投稿</a>
+</div>
+
+<div class="main">
+  <% @docs.each do |doc| %>
+  <div class="items">
+    <div class="title">
+      <h3><%= doc.title %></h3>
+    </div>
+    <div class="content">
+      <blockquote><%= doc.content %></blockquote>
+    </div>
+  </div>
+  <% end %>
+</div>
