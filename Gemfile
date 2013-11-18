@@ -60,4 +60,6 @@ group :development, :test do
   gem 'spring'
 
   gem 'spork'
+
+  gem 'selenium-webdriver'
 end
