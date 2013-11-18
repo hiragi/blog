@@ -9,10 +9,9 @@ class WelcomeController < ApplicationController
   def login_check
     @user = User.find(:first, :conditions => {:username => params[:username]})
     if @user
-      if @user.god?
-        redirect_to :action => "index"
-      end
+      cookies[:username] = params[:username]
     end
+    redirect_to :action => "index"
   end
 
   def post

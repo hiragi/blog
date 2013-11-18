@@ -1,9 +1,15 @@
 <h1>Reporter</h1>
 
+
+
 <a href="welcome/login">Login</a>
 <button onclick="alert('hello');" value="sample"></button>
 
 <h2>TIMELINE</h2>
+
+<% if cookies[:username] %>
+  <p><strong><%= cookies[:username] %></strong>でログインしています</p>
+<% end %>
 
 <div class="navi">
   <a href="welcome/post">Reportする</a>
