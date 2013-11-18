@@ -1,5 +1,13 @@
 require 'rubygems'
 require 'spork'
+# Added by hiragi
+require 'capybara/rspec'
+
+require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, :inspector => true)
+end
+Capybara.javascript_driver = :poltergeist
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -84,4 +92,24 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  ## Added by hiragi
+  config.include Capybara::DSL
+
+  config.before(:all) do
+    Capybara.default_selector = :css
+    Capybara.javascript_driver = :webkit
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 end

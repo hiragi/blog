@@ -62,4 +62,7 @@ group :development, :test do
   gem 'spork'
 
   gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'poltergeist'
+
 end
